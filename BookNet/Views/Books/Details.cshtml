@@ -1,0 +1,55 @@
+﻿@model BookNet.Models.Book
+
+@{
+    ViewBag.Title = Model.Title;
+}
+@Scripts.Render("~/Scripts/BooksScript.js")
+<h2>@Model.Title</h2>
+
+<div>
+    <h5>@Model.Author.FirstName @Model.Author.LastName</h5>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd id="priceUSD">
+            @Html.DisplayFor(model => model.Price)$
+        </dd>
+        <dt>
+            Price(NIS)
+        </dt>
+        <dd id="priceNIS">
+        </dd>
+        <dd>
+            @Html.ActionLink("Buy", "BuyBook", new { bookId = Model.ID }, new { @class = "btn btn-primary" })
+        </dd>    
+    </dl>    
+    
+    <img src="~/Images/@Model.Image" class="bookImage" width="200" height="200" onerror="this.src = '/Images/unknown.jpg';" />
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+
+    @if (ViewBag.IsAdmin)
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-default" }) @:
+    }
+</p>

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<BookNet.Models.Genre>
+
+<aside class="col-md-2">
+    @foreach (var genre in Model)
+    {
+        <div>
+            @Html.ActionLink(genre.ToString(), "Index", new { genre = genre.ToString()})
+        </div>
+    }
+    <div>
+        @Html.ActionLink("All", "Index", new { genre = "" })
+    </div>
+</aside>

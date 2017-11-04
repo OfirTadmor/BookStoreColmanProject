@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "About";
+}
+@Scripts.Render("~/Scripts/AboutPageScript.js")
+<canvas id="aboutPageTitle" width="150" height="70"></canvas>
+
+
+<video id="aboutVideo" width="480" height="270" controls autoplay>
+    <source src="../../Videos/AboutStore.mp4" type="video/mp4">
+</video>
+<div id="aboutContent">
+
+    Our mission is to provide NYU students, faculty, staff and administrators with the resources and tools necessary to achieve academic excellence.
+    The Bookstore carries textbooks, general trade books, school supplies, stationery and NYU clothing and gifts.
+    The NYU Computer Store carries computer hardware, software, accessories and iPods at exclusive NYU discounts.
+    Our goal is to provide our customers with a great shopping experience, which is why we designed the Bookstore with several new features.
+    Our store includes an event space for author readings and community events, a Kid's Corner for families and young readers to lounge and browse books, and an enhanced clothing department which includes new products and merchandise.
+    With so many exciting features to offer, we hope you will enjoy shopping at the NYU bookstore!
+</div>
+<div class="address">
+    <h3 class="addressTitle">Address:</h3>
+    <span>Elie Wiesel 7, Rishon LeZion</span>
+</div>
+<br />
+<div id="map"></div>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWBqFys-8rdAyBvJ5yZI2KFZfcbVzJU8Q&callback=initMap"></script>

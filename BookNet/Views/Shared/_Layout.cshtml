@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    
+</head>
+<body>
+    <header class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <nav class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Book Store", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @id = "appTitle"})
+            </nav>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Books", "Index", "Books")</li>
+                    <li>@Html.ActionLink("Authors", "Index", "Authors")</li>
+                    
+                    @if (AuthorizationAttribute.IsAdminLogedIn())
+                    {
+                        <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
+                        <li>@Html.ActionLink("Report", "BooksReport", "Admin")</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Admin")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Admin Page", "Login", "Admin")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <footer>
+        <p>&copy; Dor Dubnov, Chen Goren, Bar Meyuhas</p>
+    </footer>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
